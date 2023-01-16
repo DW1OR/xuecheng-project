@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * 课程-教师关系表 服务类
  * </p>
  *
- * @author itcast
+ * @author li
  * @since 2023-01-15
  */
 public interface CourseTeacherService extends IService<CourseTeacher> {

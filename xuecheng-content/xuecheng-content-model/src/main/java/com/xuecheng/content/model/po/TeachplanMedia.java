@@ -8,13 +8,12 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- *
+ * 媒资关联
  * </p>
  */
 @Data
 @TableName("teachplan_media")
 public class TeachplanMedia implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     /**
@@ -56,6 +55,4 @@ public class TeachplanMedia implements Serializable {
      * 修改人
      */
     private String changePeople;
-
-
 }

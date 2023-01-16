@@ -33,7 +33,7 @@ public class ContentCodeGenerator {
 			 "course_teacher",
 //			 "course_publish",
 //			 "course_publish_pre"
-//			"course_category"
+			"course_category"
 	};
 
 	// TODO 默认生成entity，需要生成DTO修改此变量
@@ -50,7 +50,7 @@ public class ContentCodeGenerator {
 		gc.setFileOverride(true);
 		//生成路径
 		gc.setOutputDir(System.getProperty("user.dir") + "/xuecheng-generator/src/main/java");
-		//gc.setAuthor("itcast");
+		gc.setAuthor("li");
 		gc.setOpen(false);
 		gc.setSwagger2(false);
 		gc.setServiceName("%sService");

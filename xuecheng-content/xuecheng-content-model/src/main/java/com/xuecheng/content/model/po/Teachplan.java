@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Data
 @TableName("teachplan")
 public class Teachplan implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -96,6 +95,4 @@ public class Teachplan implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime changeDate;
-
-
 }

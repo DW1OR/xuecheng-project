@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * 课程营销信息 服务类
  * </p>
  *
- * @author itcast
+ * @author li
  * @since 2023-01-15
  */
 public interface CourseMarketService extends IService<CourseMarket> {
