@@ -20,4 +20,7 @@ public interface CourseBaseInfoService {
 
     //修改课程
     CourseBaseInfoDto updateCourseBase(Long companyId, EditCourseDto dto);
+
+    //删除课程
+    void deleteCourseById(Long courseId);
 }

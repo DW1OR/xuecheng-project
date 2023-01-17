@@ -11,4 +11,13 @@ public interface TeachplanService {
 
     //新增或修改课程计划
     void saveTeachplan(SaveTeachplanDto dto);
+
+    //删除课程计划
+    void deleteTeachplan(Long teachplanId);
+
+    //下移课程计划
+    void movedownTeachplan(Long teachplanId);
+
+    //上移课程计划
+    void moveupTeachplan(Long teachplanId);
 }

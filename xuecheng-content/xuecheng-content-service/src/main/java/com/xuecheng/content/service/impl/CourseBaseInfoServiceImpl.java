@@ -8,6 +8,7 @@ import com.xuecheng.base.model.PageResult;
 import com.xuecheng.content.mapper.CourseBaseMapper;
 import com.xuecheng.content.mapper.CourseCategoryMapper;
 import com.xuecheng.content.mapper.CourseMarketMapper;
+import com.xuecheng.content.mapper.TeachplanMapper;
 import com.xuecheng.content.model.dto.AddCourseDto;
 import com.xuecheng.content.model.dto.CourseBaseInfoDto;
 import com.xuecheng.content.model.dto.EditCourseDto;
@@ -15,8 +16,11 @@ import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
 import com.xuecheng.content.model.po.CourseCategory;
 import com.xuecheng.content.model.po.CourseMarket;
+import com.xuecheng.content.model.po.Teachplan;
 import com.xuecheng.content.service.CourseBaseInfoService;
 import com.xuecheng.content.service.CourseMarketService;
+import com.xuecheng.content.service.CourseTeacherService;
+import com.xuecheng.content.service.TeachplanService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -41,6 +45,12 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
 
     @Autowired
     private CourseMarketService courseMarketService;
+
+    @Autowired
+    private CourseTeacherService courseTeacherService;
+
+    @Autowired
+    private TeachplanMapper teachplanMapper;
 
     @Override
     public PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto queryCourseParamsDto) {
@@ -168,6 +178,21 @@ public class CourseBaseInfoServiceImpl implements CourseBaseInfoService {
         //查询课程信息
         CourseBaseInfoDto courseBaseInfo = this.getCourseBaseInfo(id);
         return courseBaseInfo;
+    }
+
+    @Override
+    public void deleteCourseById(Long courseId) {
+        //先删除课程老师信息
+        courseTeacherService.deleteCourseTeacher(courseId, null);
+
+        //在删除课程计划信息
+        LambdaQueryWrapper<Teachplan> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Teachplan::getCourseId, courseId);
+        int delete = teachplanMapper.delete(queryWrapper);
+
+        //最后删除课程
+        int i = courseBaseMapper.deleteById(courseId);
+        if (delete <= 0 || i <= 0) XueChengException.cast("删除课程失败");
     }
 
     //抽取对营销信息的保存

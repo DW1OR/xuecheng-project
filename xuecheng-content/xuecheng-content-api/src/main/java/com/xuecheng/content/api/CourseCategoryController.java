@@ -32,7 +32,7 @@ public class CourseCategoryController {
         return courseCategoryService.queryTreeNodes("1");
     }
 
-    @ApiOperation("新增课程")
+    @ApiOperation("新增课程接口")
     @PostMapping("/course")
     public CourseBaseInfoDto createCourseBase(@RequestBody @Validated(ValidationGroups.Insert.class) AddCourseDto addCourseDto) {
         //@Validated注解，用于激活jsr303校验设置
@@ -51,11 +51,17 @@ public class CourseCategoryController {
         return courseBaseInfoService.getCourseBaseInfo(courseId);
     }
 
-    @ApiOperation("更新课程")
+    @ApiOperation("更新课程接口")
     @PutMapping("/course")
     public CourseBaseInfoDto updateCourseBase(@RequestBody EditCourseDto dto) {
         //获取当前用户所属培训机构的id
         Long companyId = 22L;
         return courseBaseInfoService.updateCourseBase(companyId, dto);
+    }
+
+    @ApiOperation("删除课程信息接口")
+    @DeleteMapping("/course/{courseId}")
+    public void deleteCourseById(@PathVariable Long courseId) {
+        courseBaseInfoService.deleteCourseById(courseId);
     }
 }
