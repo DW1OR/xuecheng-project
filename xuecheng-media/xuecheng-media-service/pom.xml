@@ -3,31 +3,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
+        <artifactId>xuecheng-media</artifactId>
         <groupId>com.xuecheng</groupId>
-        <artifactId>xuecheng-content</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>xuecheng-content-service</artifactId>
+    <artifactId>xuecheng-media-service</artifactId>
+    <name>xuecheng-media-service</name>
+    <description>xuecheng-media-service</description>
 
     <dependencies>
-        <!--nacos配置-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-content-model</artifactId>
+            <artifactId>xuecheng-media-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--MySQL驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
 
+        <!--MybatisPlus依赖-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -37,6 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!--排除SpringBoot依赖的日志包冲突-->
@@ -56,17 +59,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
-    </dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
-    </build>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+            <version>8.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+    </dependencies>
 </project>

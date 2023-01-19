@@ -3,19 +3,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
+        <artifactId>xuecheng-media</artifactId>
         <groupId>com.xuecheng</groupId>
-        <artifactId>xuecheng-content</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>xuecheng-content-api</artifactId>
+    <artifactId>xuecheng-media-api</artifactId>
+    <name>xuecheng-media-api</name>
+    <description>xuecheng-media-api</description>
 
     <dependencies>
-        <!--nacos注册-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-        <!--nacos配置-->
+
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
@@ -23,13 +24,13 @@
 
         <dependency>
             <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-content-model</artifactId>
+            <artifactId>xuecheng-media-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-content-service</artifactId>
+            <artifactId>xuecheng-media-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
@@ -45,6 +46,32 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!--SpringBoot对LocalDateTime boot-starter-web自动引入-->
+        <!--
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-parameter-names</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        -->
+
         <!--排除SpringBoot依赖的日志包冲突-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,22 +84,16 @@
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-
         <!--SpringBoot集成log4j2-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
-        <!--springBoot集成swagger-->
+        <!--SpringBoot集成swagger-->
         <dependency>
             <groupId>com.spring4all</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
-            <version>1.9.0.RELEASE</version>
         </dependency>
     </dependencies>
 </project>

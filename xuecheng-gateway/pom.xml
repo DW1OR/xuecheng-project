@@ -4,39 +4,27 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.xuecheng</groupId>
-        <artifactId>xuecheng-content</artifactId>
+        <artifactId>xuecheng-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../xuecheng-parent</relativePath>
     </parent>
-    <artifactId>xuecheng-content-service</artifactId>
+    <artifactId>xuecheng-gateway</artifactId>
 
     <dependencies>
-        <!--nacos配置-->
+        <!--网关-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
+        <!--服务发现中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.xuecheng</groupId>
-            <artifactId>xuecheng-content-model</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <!--SpringBoot集成Junit-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
 
         <!--排除SpringBoot依赖的日志包冲突-->
@@ -57,16 +45,4 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
-    </build>
 </project>
